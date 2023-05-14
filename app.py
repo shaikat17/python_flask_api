@@ -1,19 +1,14 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
-stores = [
-    {
-        "name": "My Store",
-        "items": [
-            {
-                "name": "chair",
-                "price": 15.99
-            }
-        ]
-    }
-]
+@app.route('/<name>')
+def index(name):
+    return f'<h1>Hello {name}</h1>'
 
-@app.get("/store")
-def get_stores():
-    return {"stores": stores}
+@app.route('/amaar')
+def amar():
+    return "amar"
+
+if __name__ == '__main__':
+    app.run(debug=True)
